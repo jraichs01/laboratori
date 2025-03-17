@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo> 
+    <template id="meu_informe_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2 style="text-align:center;">Informe de Mi Modelo</h2>
+                        <p><strong>Codi:</strong> <t t-esc="doc.codi"/></p>
+                        <p><strong>Nom:</strong> <t t-esc="doc.nom"/></p>
+                        <p><strong>Descripció:</strong> <t t-esc="doc.descripcio"/></p>
+                        <p><strong>Pes total:</strong> <t t-esc="doc.pes_total"/> Kg</p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo> 
+

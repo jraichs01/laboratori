@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        
+    <!-- Formulari personalitzat-->
+    <record id="laboratori_form" model="ir.ui.view">
+        <field name="name">lab.model.form</field>
+        <field name="model">lab.model</field>
+        <field name="arch" type="xml">
+            <form string="Laboratori">
+                <header>
+                    <h1>Formulari de mostres</h1>
+                </header>
+                <!-- Definim botons -->
+                <group>
+                    <!-- les funcions estan definifes a : lab_model.py -->
+                    <button name="funcioExemple" string="Boto1" type="object"/>
+                    <button name="getHora" string="Hora pesada" type="object"/>
+                </group>
+                <!-- Definim camps -->
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="codi"/>
+                            <field name="nom"/>
+                            <field name="descripcio"/>
+                        </group>
+                        <group>
+                            <field name="data"></field>
+                            <field name="hora"></field>
+                            <field name="client_id"></field>
+                            <field name="product_id"></field>
+                            <field name="pes_envas"></field>
+                            <field name="pes_producte"></field>
+                            <field name="pes_total"></field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- llista personalitzada -->
+    <record id="laboratori_tree" model="ir.ui.view">
+        <field name="name">Llista de mostres</field>
+        <field name="model">lab.model</field>
+        <field name="arch" type="xml">
+            <tree>  <!-- en odoo 18 tree : list -->
+                <header>
+                        <button name="funcioExemple" type="object" string="Boto2"/>
+                <!-- <button string="Print Labels" type="object" name="meu_informe_action"/> -->
+                </header>
+                <field name="data"></field>
+                <field name="codi"/>
+                <field name="nom"/>
+                <field name="descripcio"/>
+                <field name="client_id"></field>
+                <field name="product_id"></field>
+                <field name="pes_total"></field>
+            </tree> 
+        </field>
+    </record>
+    
+     <!-- Definim l'acció per obrir una llista i formulari-->
+    <record id="lab_laboratori_action"  model="ir.actions.act_window">
+        <field name="name">Laboratori Qualitat</field>
+        <field name="res_model">lab.model</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+     <!-- Menús de l'aplicació -->
+    <menuitem id="menu_principal" name="Laboratori" sequence='1'/>
+    <menuitem id="menu_sequndari_1" name="Mostres" parent="menu_principal" action="lab_laboratori_action"/>
+
+</odoo>

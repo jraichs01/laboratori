@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="meu_informe_action" model="ir.actions.report">
+        <field name="name">Informe de la Mostra</field>
+        <field name="model">lab_model</field>
+        <field name="report_name">laboratori.meu_informe_template</field>
+        <field name="report_type">qweb-pdf</field> <!-- qweb-html , si volem un HTML -->
+    </record>
+</odoo>
