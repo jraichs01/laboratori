@@ -12,7 +12,7 @@
         'security/ir.model.access.csv', 
         'views/laboratori_view.xml', 
         'views/meu_informe_action_report.xml', 
-        'views/meu_informe_template.xml', 
+        'views/meu_informe_template.xml',
     ],
     'installable': True,
     'application': True,

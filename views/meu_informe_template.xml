@@ -1,19 +1,79 @@
 <?xml version='1.0' encoding='utf-8'?>
 <odoo> 
-    <template id="meu_informe_template">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
-                <t t-call="web.internal_layout">
+    <data>
+        <!-- 
+            Plantilla on:
+            - docs es l'objecte que li passem des de l'acció que el crida, en aquets cas lab.model 
+            - l'interpreta el render Qweb
+        -->
+        <template id="pdf_mostres_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="obj">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <h2 style="text-align:center;">Mostra Laboratori</h2>
+                            <p><strong>Codi:</strong> <t t-esc="obj.codi"/></p>
+                            <p><strong>Descripció:</strong> <t t-esc="obj.descripcio"/></p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <!-- una altra plantilla -->
+        <template id="html_mostres_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="obj">
+                    <t t-call="web.internal_layout">
+                        <div class="page">
+                            <h2 style="text-align:center;">Mostra Laboratori</h2>
+                            <p><strong>Codi:</strong> <t t-esc="obj.codi"/></p>
+                            <p><strong>Nom:</strong> <t t-esc="obj.nom"/></p>
+                            <p><strong>Descripció:</strong> <t t-esc="obj.descripcio"/></p> 
+                            <p><strong>Data:</strong> <t t-esc="obj.hora"/></p>                            
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <!-- En construcció: Llista de mostres -->
+        <template id="html_llistat_mostres_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="obj">
                     <div class="page">
-                        <h2 style="text-align:center;">Informe de Mi Modelo</h2>
-                        <p><strong>Codi:</strong> <t t-esc="doc.codi"/></p>
-                        <p><strong>Nom:</strong> <t t-esc="doc.nom"/></p>
-                        <p><strong>Descripció:</strong> <t t-esc="doc.descripcio"/></p>
-                        <p><strong>Pes total:</strong> <t t-esc="doc.pes_total"/> Kg</p>
+                        <h2 style="text-align: center;">Llista de Registres</h2>
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nom</th>
+                                    <th>Descripció</th>
+                                    <th>Hora</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="contador" t-value="1"/>
+                                <t t-foreach="obj.codi" t-as="linea">
+                                    <tr>
+                                        <td><t t-esc="contador"/></td>
+                                        <td><t t-esc="obj.nom"/></td>
+                                        <td><t t-raw="linea"/></td>
+                                        <!--
+                                        <td><t t-esc="linea.codi"/></td>
+                                        <td><t t-esc="linea.descripcio"/></td>
+                                        <td><t t-esc="linea.hora"/></td>
+                                        -->
+                                    </tr>
+                                    <t t-set="contador" t-value="contador + 1"/>
+                                </t>
+                            </tbody>
+                        </table>
                     </div>
                 </t>
             </t>
-        </t>
-    </template>
+        </template>
+
+    </data>  
 </odoo> 
 

@@ -10,11 +10,10 @@
                 <header>
                     <h1>Formulari de mostres</h1>
                 </header>
-                <!-- Definim botons -->
                 <group>
-                    <!-- les funcions estan definifes a : lab_model.py -->
-                    <button name="funcioExemple" string="Boto1" type="object"/>
-                    <button name="getHora" string="Hora pesada" type="object"/>
+                    <!-- Botons. Els mètodes definits a : lab_model.py (imprimirMostra, getHora)-->
+                    <button name="imprimirMostraPDF" string="Imprimir" type="object" class="oe_highlight"/>
+                    <button name="getHora" string="Hora pesada" type="object" class="oe_highlight"/>
                 </group>
                 <!-- Definim camps -->
                 <sheet>
@@ -44,10 +43,11 @@
         <field name="name">Llista de mostres</field>
         <field name="model">lab.model</field>
         <field name="arch" type="xml">
-            <tree>  <!-- en odoo 18 tree : list -->
+            <tree string="Mostres Laboratori" multi_edit="1" sample="1">  <!-- en odoo 18 tree : list -->
                 <header>
-                        <button name="funcioExemple" type="object" string="Boto2"/>
-                <!-- <button string="Print Labels" type="object" name="meu_informe_action"/> -->
+                    <button name="imprimirLlistaMostresHTML" string="Llistat" type="object" class="oe_highlight"/>
+                    <button name="imprimirMostraHTML" string="HTML" type="object" class="oe_highlight"/>
+                    <button name="imprimirMostraPDF" string="PDF" type="object" class="oe_highlight"/>
                 </header>
                 <field name="data"></field>
                 <field name="codi"/>
@@ -66,7 +66,6 @@
         <field name="res_model">lab.model</field>
         <field name="view_mode">tree,form</field>
     </record>
-
 
      <!-- Menús de l'aplicació -->
     <menuitem id="menu_principal" name="Laboratori" sequence='1'/>

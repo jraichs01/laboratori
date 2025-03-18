@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="meu_informe_action" model="ir.actions.report">
-        <field name="name">Informe de la Mostra</field>
-        <field name="model">lab_model</field>
-        <field name="report_name">laboratori.meu_informe_template</field>
-        <field name="report_type">qweb-pdf</field> <!-- qweb-html , si volem un HTML -->
-    </record>
+    <data>
+
+        <!-- Definim les accions que podem fer els usuaris -->
+
+        <record id="pdf_informe_action" model="ir.actions.report">
+            <field name="name">Informe de la Mostra</field> <!-- nom-->
+            <field name="model">lab.model</field> <!-- model -->
+            <field name="report_name">laboratori.pdf_mostres_template</field> <!-- crida a ID plantilla -->
+            <field name="report_file">laboratori.pdf_mostres_template</field> <!-- crida a ID plantilla -->
+            <field name="report_type">qweb-pdf</field> <!-- qweb-html , si volem un HTML -->
+        </record>
+
+        <record id="html_informe_action" model="ir.actions.report">
+            <field name="name">Informe de la Mostra</field> <!-- nom-->
+            <field name="model">lab.model</field> <!-- model -->
+            <field name="report_name">laboratori.html_mostres_template</field> <!-- crida a ID plantilla -->
+            <field name="report_file">laboratori.html_mostres_template</field> <!-- crida a ID plantilla -->
+            <field name="report_type">qweb-html</field> <!-- qweb-html , si volem un HTML -->
+        </record>
+
+        <record id="html_llistat_mostres_accio" model="ir.actions.report">
+            <field name="name">Llista Mostres</field> <!-- nom-->
+            <field name="model">lab.model</field> <!-- model -->
+            <field name="report_name">laboratori.html_llistat_mostres_template</field> <!-- crida a ID plantilla -->
+            <field name="report_file">laboratori.html_llistat_mostres_template</field> <!-- crida a ID plantilla -->
+            <field name="report_type">qweb-html</field> <!-- qweb-html , si volem un HTML -->
+        </record>
+
+    </data>
 </odoo>
