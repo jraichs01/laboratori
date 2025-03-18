@@ -21,6 +21,7 @@ class LabModel(models.Model):
     hora = fields.Char('Hora')
     client_id = fields.Many2one('res.partner','Client') # relaciona amb la taula res.partner
     product_id = fields.Many2one('product.product','Producte') # relaciona amb la taula product.product
+    mostra_ok = fields.Boolean('Mostra analitzada ?')
     pes_envas = fields.Float('Pes de envas')
     pes_producte = fields.Float('Pes del producte')
     pes_total = fields.Float('Pes Total') # camp calculat
@@ -36,7 +37,7 @@ class LabModel(models.Model):
     # Definim una mètode public de la classe LabModel que el cridarem amb un botó
     def getHora(self):
         self.hora = datetime.now().strftime("%Y-%m-%d %H:%M:%S") # obtenim la hora actual
-        print("########## Data i Hora actural:", self.hora) # per a veure el resultat a la consola
+        print(" --dev=reload ---> Data i Hora actural:", self.hora) # per a veure el resultat a la consola
         return True
 
     # Metodes, cridem ACCIONS DEFINIDES a: meu_informe_action_report.xml 

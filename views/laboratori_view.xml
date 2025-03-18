@@ -3,8 +3,8 @@
         
     <!-- Formulari personalitzat-->
     <record id="laboratori_form" model="ir.ui.view">
-        <field name="name">lab.model.form</field>
-        <field name="model">lab.model</field>
+        <field name="name">Formulari.lab.model</field>
+        <field name="model">lab.model</field> <!-- Relacionem el formulari amb el model -->
         <field name="arch" type="xml">
             <form string="Laboratori">
                 <header>
@@ -13,7 +13,7 @@
                 <group>
                     <!-- Botons. Els mètodes definits a : lab_model.py (imprimirMostra, getHora)-->
                     <button name="imprimirMostraPDF" string="Imprimir" type="object" class="oe_highlight"/>
-                    <button name="getHora" string="Hora pesada" type="object" class="oe_highlight"/>
+                    <button name="getHora" string="Hora actual" type="object" class="oe_highlight"/>
                 </group>
                 <!-- Definim camps -->
                 <sheet>
@@ -22,15 +22,16 @@
                             <field name="codi"/>
                             <field name="nom"/>
                             <field name="descripcio"/>
+                            <field name="mostra_ok"/>
                         </group>
                         <group>
-                            <field name="data"></field>
-                            <field name="hora"></field>
-                            <field name="client_id"></field>
-                            <field name="product_id"></field>
-                            <field name="pes_envas"></field>
-                            <field name="pes_producte"></field>
-                            <field name="pes_total"></field>
+                            <field name="data"/>
+                            <field name="hora"/>
+                            <field name="client_id"/>
+                            <field name="product_id"/>
+                            <field name="pes_envas"/>
+                            <field name="pes_producte"/>
+                            <field name="pes_total"/>
                         </group>
                     </group>
                 </sheet>
@@ -40,8 +41,8 @@
     
     <!-- llista personalitzada -->
     <record id="laboratori_tree" model="ir.ui.view">
-        <field name="name">Llista de mostres</field>
-        <field name="model">lab.model</field>
+        <field name="name">Llista.lab.model</field>
+        <field name="model">lab.model</field> <!-- Relacionem el formulari amb el model -->
         <field name="arch" type="xml">
             <tree string="Mostres Laboratori" multi_edit="1" sample="1">  <!-- en odoo 18 tree : list -->
                 <header>
@@ -49,13 +50,13 @@
                     <button name="imprimirMostraHTML" string="HTML" type="object" class="oe_highlight"/>
                     <button name="imprimirMostraPDF" string="PDF" type="object" class="oe_highlight"/>
                 </header>
-                <field name="data"></field>
+                <field name="data"/>
                 <field name="codi"/>
                 <field name="nom"/>
                 <field name="descripcio"/>
-                <field name="client_id"></field>
-                <field name="product_id"></field>
-                <field name="pes_total"></field>
+                <field name="client_id"/>
+                <field name="product_id"/>
+                <field name="pes_total"/>
             </tree> 
         </field>
     </record>
