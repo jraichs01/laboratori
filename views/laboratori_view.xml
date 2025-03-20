@@ -57,6 +57,7 @@
                 <field name="client_id"/>
                 <field name="product_id"/>
                 <field name="pes_total"/>
+                <field name="pes_envas"/>
             </tree> 
         </field>
     </record>
